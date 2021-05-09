@@ -1,0 +1,30 @@
+[
+    {
+        "reference": 1,
+        "accountNumber": "ABCD",
+        "startBalance": 2000,
+        "mutation": -1000,
+        "endBalance": 1000
+    },
+    {
+        "reference": 2,
+        "accountNumber": "PQRS",
+        "startBalance": 3700,
+        "mutation": -3000,
+        "endBalance": 700
+    },
+    {
+        "reference": 3,
+        "accountNumber": "WXYZ",
+        "startBalance": 1000,
+        "mutation": 300,
+        "endBalance": 1300
+    },
+    {
+        "reference": 4,
+        "accountNumber": "LMNO",
+        "startBalance": 1000,
+        "mutation": 600,
+        "endBalance": 1000
+    }
+]
