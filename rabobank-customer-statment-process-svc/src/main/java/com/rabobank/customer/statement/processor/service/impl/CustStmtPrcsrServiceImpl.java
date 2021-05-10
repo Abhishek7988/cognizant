@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.rabobank.customer.statement.processor.constants.Constant;
 import com.rabobank.customer.statement.processor.exception.CustStmtPrcsrException;
 import com.rabobank.customer.statement.processor.model.request.CustStmtRecord;
 import com.rabobank.customer.statement.processor.model.response.CustStmtPrcsrResponse;
@@ -28,11 +29,6 @@ public class CustStmtPrcsrServiceImpl implements ICustStmtPrcsrService {
 	 * @return
 	 */
 	
-	private static final String DUPLICATE_REFERENCE_INCORRECT_END_BALANCE = "DUPLICATE_REFERENCE_INCORRECT_END_BALANCE";
-	private static final String DUPLICATE_REFERENCE = "DUPLICATE_REFERENCE";
-	private static final String INCORRECT_END_BALANCE = "INCORRECT_END_BALANCE";
-	private static final String SUCCESSFUL = "SUCCESSFUL";
-	
 	public CustStmtPrcsrResponse validateCustStmt(final List<CustStmtRecord> custStmtRecord) {
 		log.info("Entering {}.{}", getClass().getName(), "validate()");
 		
@@ -41,19 +37,19 @@ public class CustStmtPrcsrServiceImpl implements ICustStmtPrcsrService {
 		
 		if(!duplicateReference.isEmpty() && !incorrectEndBalance.isEmpty()) {
 			duplicateReference.addAll(incorrectEndBalance);
-			throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(DUPLICATE_REFERENCE_INCORRECT_END_BALANCE, duplicateReference));
+			throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(Constant.DUPLICATE_REFERENCE_INCORRECT_END_BALANCE, duplicateReference));
 		} else {
 			if(!duplicateReference.isEmpty()) {
-				throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(DUPLICATE_REFERENCE, duplicateReference));
+				throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(Constant.DUPLICATE_REFERENCE, duplicateReference));
 			}
 			
 			if(!incorrectEndBalance.isEmpty()) {
-				throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(INCORRECT_END_BALANCE, incorrectEndBalance));
+				throw new CustStmtPrcsrException(new CustStmtPrcsrResponse(Constant.INCORRECT_END_BALANCE, incorrectEndBalance));
 			}
 		}
 		
 		log.info("Exiting {}.{}", getClass().getName(), "validate()");
-		return new CustStmtPrcsrResponse(SUCCESSFUL, new ArrayList<CustStmtRecord>());
+		return new CustStmtPrcsrResponse(Constant.SUCCESSFUL, new ArrayList<CustStmtRecord>());
 	}
 	/**
 	 * validates customer records for Duplicate records wrt reference no.
