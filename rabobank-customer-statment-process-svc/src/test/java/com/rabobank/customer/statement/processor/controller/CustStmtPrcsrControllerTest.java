@@ -15,7 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.rabobank.customer.statement.processor.constants.Constant;
+import com.rabobank.customer.statement.processor.constants.CustStmtPrcsrConstant;
 import com.rabobank.customer.statement.processor.model.request.CustStmtRecord;
 import com.rabobank.customer.statement.processor.model.response.CustStmtPrcsrResponse;
 import com.rabobank.customer.statement.processor.service.ICustStmtPrcsrService;
@@ -40,12 +40,12 @@ public class CustStmtPrcsrControllerTest {
 	@Test
 	public void testValidateCustStmt() {
 		final List<CustStmtRecord> custStmtRecordList = new ArrayList<>();
-		final CustStmtPrcsrResponse custStmtPrcsrResponse = new CustStmtPrcsrResponse(Constant.SUCCESSFUL, new ArrayList<CustStmtRecord>());
+		final CustStmtPrcsrResponse custStmtPrcsrResponse = new CustStmtPrcsrResponse(CustStmtPrcsrConstant.SUCCESSFUL, new ArrayList<CustStmtRecord>());
 		
 		when(iCustStmtPrcsrService.validateCustStmt(custStmtRecordList)).
 			thenReturn(custStmtPrcsrResponse);
 		
-		assertEquals(Constant.SUCCESSFUL, 
+		assertEquals(CustStmtPrcsrConstant.SUCCESSFUL, 
 				custStmtPrcsrController.validateCustStmt(custStmtRecordList).getResult());
 		assertEquals(0, 
 				custStmtPrcsrController.validateCustStmt(custStmtRecordList).getErrorRecords().size());
