@@ -31,7 +31,7 @@ import com.rabobank.customer.statement.processor.service.ICustStmtPrcsrService;
  */
 @SpringBootTest(classes = { ControllerAdviceCustom.class, CustStmtPrcsrServiceImpl.class })
 @RunWith(SpringRunner.class)
-public class CustStmtPrcsrServiceImplTest {
+public class CustStmtPrcsrServiceImpITest {
 
 	/**
 	 * @throws java.lang.Exception
